@@ -60,21 +60,7 @@ GET /metrics?device_id=sensor_001&start=2025-05-20T00:00:00Z&end=2025-05-20T23:5
 
 ---
 
-## 🧪 How to Run (Dev & Prod)
 
-### 🔧 Requirements
-
-* Docker & Docker Compose installed
-
-### 🚀 Start Project
-
-```bash
-git clone https://github.com/yourusername/iot-sensor-monitoring.git
-cd iot-sensor-monitoring
-docker-compose up --build
-```
-
----
 
 
 
