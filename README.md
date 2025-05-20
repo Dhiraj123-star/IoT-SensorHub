@@ -12,7 +12,6 @@ A simple, production-grade API built with **FastAPI**, **InfluxDB**, **Docker**,
 - 📥 **/ingest** endpoint to receive simulated sensor data (e.g., temperature, humidity)
 - 📊 **/metrics** endpoint to retrieve historical metrics by device and time range
 - 🗃️ Time-series data stored in **InfluxDB**, optimized for queries
-- 🧹 Background task to purge old data (for simulation demo)
 - 📦 Dockerized with one-command setup using **Docker Compose**
 
 ---
