@@ -1,0 +1,22 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# Environment variable files
+.env
+*.env
+
+# VSCode
+.vscode/
+
+
+# InfluxDB local data (if you're using local volumes and need to ignore them)
+influxdb_data/
