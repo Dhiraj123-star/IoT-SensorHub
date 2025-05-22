@@ -25,5 +25,18 @@ services:
       - DOCKER_INFLUXDB_INIT_BUCKET=iotbucket
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=my-token
 
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - influxdb
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+
 volumes:
   influxdb-data:
+  grafana-storage:
