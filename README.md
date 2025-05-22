@@ -13,19 +13,22 @@ A simple, production-grade API built with **FastAPI**, **InfluxDB**, **Docker**,
 - 📊 **/metrics** endpoint to retrieve historical metrics by device and time range
 - 🗃️ Time-series data stored in **InfluxDB**, optimized for queries
 - 📊 Real-time data visualization and dashboards with **Grafana**
-- 📦 Dockerized with one-command setup using **Docker Compose**
+- 🐳 Dockerized and published to Docker Hub using GitHub Actions
+- 🔁 CI/CD workflow for automatic Docker image build and push
+- 📦 One-command setup using **Docker Compose**
 
 ---
 
 ## 📦 Tech Stack
 
 | Tech           | Description                        |
-|----------------|----------------------------------|
+|----------------|------------------------------------|
 | FastAPI        | High-performance async API backend |
-| InfluxDB       | Time-series database             |
-| Grafana        | Visualization and dashboard tool |
-| Docker         | Containerization                 |
-| Docker Compose | Multi-container orchestration    |
+| InfluxDB       | Time-series database               |
+| Grafana        | Visualization and dashboard tool   |
+| Docker         | Containerization                   |
+| Docker Compose | Multi-container orchestration      |
+| GitHub Actions | CI/CD automation for Docker builds |
 
 ---
 
@@ -70,11 +73,6 @@ GET /metrics?device_id=sensor_001&start=2025-05-20T00:00:00Z&end=2025-05-20T23:5
   http://localhost:3000
   ```
 
-* Default Grafana credentials:
-
-  ```
-  Username: admin
-  Password: admin
   ```
 
 * **InfluxDB** is added as a data source in Grafana using:
@@ -103,6 +101,39 @@ GET /metrics?device_id=sensor_001&start=2025-05-20T00:00:00Z&end=2025-05-20T23:5
 
 ---
 
+## 🔄 CI/CD with GitHub Actions
+
+This project includes a GitHub Actions workflow to automatically build and push Docker images to Docker Hub when you push to the `main` branch.
+
+* **Workflow Triggers:**
+
+  * Push to `main` branch
+  * Pull request targeting `main` branch
+
+### Secrets Required
+
+Add the following secrets to your GitHub repository under:
+
+```
+Settings > Secrets and variables > Actions
+```
+
+| Secret Name       | Description                    |
+| ----------------- | ------------------------------ |
+| `DOCKER_USERNAME` | Your Docker Hub username       |
+| `DOCKER_PASSWORD` | Your Docker Hub password/token |
+
+### GitHub Actions Workflow Summary
+
+* Checks out source code
+* Sets up Docker Buildx
+* Logs in to Docker Hub
+* Builds and pushes Docker image
+* Tags image as `latest`
+
+
+---
+
 ## 🚀 Getting Started
 
 1. Clone the repo
@@ -110,6 +141,7 @@ GET /metrics?device_id=sensor_001&start=2025-05-20T00:00:00Z&end=2025-05-20T23:5
 3. Run `docker-compose up --build`
 4. Start the sensor simulation script to send data to the API
 5. Access Grafana dashboard at `http://localhost:3000` to monitor live data
+6. Push code to GitHub `main` branch to trigger Docker Hub build
 
 ---
 
@@ -118,6 +150,7 @@ GET /metrics?device_id=sensor_001&start=2025-05-20T00:00:00Z&end=2025-05-20T23:5
 * Ensure InfluxDB tokens and bucket names in your FastAPI app and Grafana match exactly.
 * Grafana dashboards can be exported/imported as JSON for reuse or sharing.
 * Use the `/metrics` endpoint for RESTful access to historical data if visualization isn't needed.
+* The GitHub Actions workflow handles Docker image delivery to Docker Hub, making deployment seamless.
 
 ---
 
