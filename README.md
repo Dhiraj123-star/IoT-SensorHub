@@ -73,8 +73,6 @@ GET /metrics?device_id=sensor_001&start=2025-05-20T00:00:00Z&end=2025-05-20T23:5
   http://localhost:3000
   ```
 
-  ```
-
 * **InfluxDB** is added as a data source in Grafana using:
 
   * URL: `http://influxdb:8086`
